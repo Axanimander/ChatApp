@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% load static %}
+{% block title %}{{title}}{% endblock %}
+{% block content %}
+
+<div class="large-4">
+    
+</div>
+<div class="large-4">
+<h1>You are viewing the profile of {{user.username}}</h1>
+</div>
+<div class="large-4">
+    <h2>Rooms created:</h2>
+    {% for room in rooms %}
+    <div class="card" style="width: 300px">
+        <div class="card-divider">
+            <a href="/chat/{{room.id}}">{{room.roomName}}</a>
+        </div>
+    </div>
+    {%endfor%}
+</div>
+
+{% endblock %}

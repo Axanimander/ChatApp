@@ -1,0 +1,96 @@
+#chat-log{
+    background-color:#23272A;
+    color: white;
+    
+}
+
+#chat-log:hover{
+    cursor: default;
+}
+
+.top-bar{
+    background-color: #7881F5;
+    width:100%;
+
+}
+#topbarbutton{
+    color:white;
+}
+#dropdown{
+    background-color: #7881F5;
+}
+
+
+#chatbody{
+    background-color: #7881F5;
+
+}
+#chat-log{
+    margin-bottom: 0px;
+}
+
+#chat-message-input{
+    background-color: #87A777;
+    margin-bottom: 0px;
+}
+#senddiv{
+    background-color: #23272A;
+    border:solid white 2px;
+}
+#senddiv input{
+    background-color: #23272A;
+    color:white;
+    border:none;
+    width: 100%;
+}
+#chat-message-submit{
+    margin-top: 0px;
+    padding-top: 0px;
+}
+
+#tag{
+    margin: 2px;
+    border: solid greenyellow 2px;
+    background-color: #4249A8;
+}
+
+
+#usersinroom{
+    background-color: #23272A;
+    color: green;
+}
+
+#chatgrid{
+    padding-top: 3%;
+    width: 100%;
+}
+
+.body{
+    background-color: #4249A8;
+}
+.full-height {height: 100%}
+
+#mainbody{
+    background-color:lemonchiffon;
+}
+
+
+#roomname{
+    background-color:gray;
+}
+
+#roomcontainer{
+    background-color: aquamarine;
+    border: solid blueviolet 5px;
+    margin: 10px;
+}
+
+#id_message{
+    background-color: #4249A8;
+    width: 50%;
+    color: bisque;
+}
+
+#gotoroom{
+    background-color: #23272A;
+}

@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{% load static %}
+{% block title %}{% endblock %}
+{% block content %}
+<script>
+    roomidarr = []
+</script>
+<ul>
+    <div class="grid-x">
+        <div class="large-2 cell">
+            {% if user.is_authenticated %}
+                <form action="" method="post">
+                {% csrf_token %}
+                {{roomform}}
+                <input type="submit" class="button expanded" value="Make Room"/>
+            </form>
+            {% endif %}
+        </div>
+        <div class="large-8 cell">
+            {% for room in roomlist %}
+                <div class="large-4 medium-4 cell", id="roomcontainer">
+                    <script>
+                        roomidarr.push("{{room.id}}")
+                    </script>
+                    <div class="large-2 cell label" id="roomname">
+                        <h5>{{room.roomName}}</h5>
+                    </div>
+                    <script type="text/javascript">
+                        var roomid = "{{room.id}}"
+                    </script>
+                    <div class="grid-x">
+                        <h5>Tags:</h5>
+                        {% for message in room.messages %}
+                            <a href={% url 'tagurl' message.content %} class="button" id="tag">{{message.content}}</a>  
+                        {% endfor %}
+                     </div>
+                    <div class="large-2 cell">
+                   <form  id = "testform{{room.id}}"action="comment/{{room.id}}/"  method="post">
+                        {% csrf_token %}
+                            {{messageform.message}}
+                        <div class="grid-x">
+                        <input id="room-name-submit{{room.id}}" type="submit" class="button" value="Add Tag" name="{{room.id}}">
+                    </form>
+                    <form id="gotoroom{{room.id}}"" action="chat/{{room.id}}" value="Enter Room" name="{{room.roomName}}">
+                        <input id="gotoroom" type="submit" class="button" value="Enter Room" name="{{room.roomName}}">
+                    </form>
+                </div>
+                </div>
+            </div>   
+            {% endfor %}
+        </div>
+    </div>
+</ul>
+
+
+
+{% endblock %}

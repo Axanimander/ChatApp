@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block content %}
+
+<body id="chatbody">
+    <div class="grid-y medium-grid-frame" >
+        <div class="large 2-cell ">
+            <p class="label">Chatting in {{roomname}}</p>
+        
+            </div>
+            <div class="grid-x"  >
+                <div class="large-10 cell ">
+                    <textarea id="chat-log" cols="100" rows="31" disabled="disabled"></textarea>
+                    {% if  user.is_authenticated %}
+                    <input id="chat-message-input" type="text" size="100">
+                    <div id="senddiv">
+                        <input id="chat-message-submit"  type="button" value="Send">
+                    </div>
+                    {% endif %}
+                    {%if not user.is_authenticated %}
+                    <p>Login to chat!</p>
+                    {%endif%}
+                    {{ room_id|json_script:"room_id" }}
+                    {{ user_id|json_script:"user_id" }}
+                    {{ message_log|json_script:"message_log"}}
+                    {{ users_log|json_script:"users_log"}}
+                </div>  
+                <div class="large-2" id="usersinroom">
+                    Users in this room
+                </div>
+            </div>  
+        </div>
+    </div>
+</body>
+<script>
+
+</script>
+<script src="{% static "app.js" %}"></script>
+{% endblock %}

@@ -1,0 +1,36 @@
+{% load static %}
+<!DOCTYPE html>
+
+<head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.6.3/dist/css/foundation.min.css" integrity="sha256-ogmFxjqiTMnZhxCqVmcqTvjfe1Y/ec4WaRj/aQPvn+I=" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{% static "css/app.css" %}">
+</head>
+<body id="mainbody">
+<div class="top-bar">
+    <div class="top-bar-left">
+      <ul class="dropdown menu" id="dropdown">
+        <li><a href="/"  id="topbarbutton">Home</a></li>
+        
+        {% if not user.is_authenticated %}
+        <li><a href="/login/" id="topbarbutton">Login</a></li>
+         
+        <li><a href="/register/"  id="topbarbutton">Register</a></li>
+        {% endif %}
+        {% if user.is_authenticated %}
+        <li><a href="/logout/" id="topbarbutton">Logout</a></li>
+        <li><a href="/profile/{{request.user.id}}/"  id="topbarbutton">Profile</a></li>
+        {% endif %}
+        
+      </ul>
+    </div>
+
+  </div>
+<div id="bodydiv">
+{%block title%}
+{% endblock %}
+{% block content %}
+{% endblock  %}
+</div>
+
+</body>
+<script src="https://cdn.jsdelivr.net/npm/foundation-sites@6.6.3/dist/js/foundation.min.js" integrity="sha256-pRF3zifJRA9jXGv++b06qwtSqX1byFQOLjqa2PTEb2o=" crossorigin="anonymous"></script>
