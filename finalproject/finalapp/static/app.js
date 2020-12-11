@@ -43,6 +43,7 @@ const chatSocket = new WebSocket(
 
 chatSocket.onmessage = function(e) {
     const data = JSON.parse(e.data);
+    console.log(data);
     printToChat((data.username + ':\n\t' + data.message + '\n'));
     textarea.scrollTop = textarea.scrollHeight;
     
