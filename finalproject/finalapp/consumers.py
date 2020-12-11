@@ -49,7 +49,7 @@ class ChatConsumer(WebsocketConsumer):
                 'type': 'chat_message',
                 'message': message,
                 'username': username,
-                'Testvalue': '33333',
+                
             }
         )
 
@@ -60,5 +60,5 @@ class ChatConsumer(WebsocketConsumer):
         # Send message to WebSocket
         self.send(text_data=json.dumps({
             'username': username,
-            'message': message
+            'message': message,
         }))
