@@ -19,7 +19,6 @@ class roomForm(forms.Form):
     def save(self, request):
         room_instance = models.roomModel()
         room_instance.roomName=self.cleaned_data["room"]
-        room_instance.timeout=self.cleaned_data["timeout"]
         room_instance.creator=request.user
         room_instance.save()
         return room_instance
