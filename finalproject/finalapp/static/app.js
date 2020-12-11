@@ -68,6 +68,7 @@ document.querySelector('#chat-message-submit').onclick = function(e) {
     chatSocket.send(JSON.stringify({
         'message' : message,
         'roomName' : roomName,
+        'username' : username,
     }));
     messageInputDom.value = '';
     

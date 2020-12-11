@@ -34,7 +34,6 @@ class ChatConsumer(WebsocketConsumer):
         )
     def receive(self, text_data):
         user = self.scope['user'].id
-        
         text_data_json = json.loads(text_data)
         message = text_data_json['message']
         room = text_data_json['roomName']
@@ -44,23 +43,20 @@ class ChatConsumer(WebsocketConsumer):
         
         logMessage = models.ChatLogMessage.create(room=roomInstance, sender=senderInstance,username=username, content=message)
         logMessage.save()
-        
-        
-        
         async_to_sync(self.channel_layer.group_send)(
         self.room_group_name,
             {
                 'type': 'chat_message',
                 'message': message,
                 'username': username,
+                'Testvalue': '33333',
             }
         )
 
     def chat_message(self, event):
         message = event['message']
-        user = self.scope['user'].id
-        senderInstance = models.User.objects.get(pk=user)
-        username = senderInstance.username
+        username = event['username']
+
         # Send message to WebSocket
         self.send(text_data=json.dumps({
             'username': username,
