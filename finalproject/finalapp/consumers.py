@@ -57,8 +57,11 @@ class ChatConsumer(WebsocketConsumer):
 
     def chat_message(self, event):
         message = event['message']
-
+        user = self.scope['user'].id
+        senderInstance = models.User.objects.get(pk=user)
+        username = senderInstance.username
         # Send message to WebSocket
         self.send(text_data=json.dumps({
+            'username': username,
             'message': message
         }))
