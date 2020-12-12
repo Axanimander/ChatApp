@@ -38,6 +38,7 @@ class Follower(models.Model):
 
     class Meta:
         unique_together = ('follower', 'following')
-    
+    def __str__(self):
+       return f'{self.following.username}'
     def __unicode__(self):
         return u'%s follows %s' % (self.follower, self.following)

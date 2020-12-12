@@ -12,7 +12,7 @@ def must_be_unique(value):
 class roomForm(forms.Form):
     room = forms.CharField(
         label='RoomTitle',
-        required=True,
+        required=False,
         max_length=50
     )
 
@@ -22,6 +22,8 @@ class roomForm(forms.Form):
         room_instance.creator=request.user
         room_instance.save()
         return room_instance
+    def filled(self):
+        return len(self.cleaned_data["room"])
 class messageForm(forms.Form):
     message = forms.CharField(
         label="Content",
@@ -55,3 +57,19 @@ class RegistrationForm(UserCreationForm):
         if commit:
             user.save()
         return user
+
+class top_search_form(forms.Form):
+    choice = (
+        ("1", "Tag"),
+        ("2", "Room Name"),
+        ("3",  "Room Creator")
+    )
+    search_by = forms.ChoiceField(label='', required=False, choices=choice)
+    search_value = forms.CharField(label='', required=False, max_length=50)
+    
+    def get_results(self):
+        data=self.cleaned_data["search_value"]
+        return data
+    def get_type(self):
+        data = self.cleaned_data["search_by"]
+        return data

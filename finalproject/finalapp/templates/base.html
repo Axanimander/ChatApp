@@ -20,7 +20,12 @@
         <li><a href="/logout/" id="topbarbutton">Logout</a></li>
         <li><a href="/profile/{{request.user.id}}/"  id="topbarbutton">Profile</a></li>
         {% endif %}
-        
+        <form action = "/" method = "GET">
+            <div class="grid-x" id="topsearchbar">
+              {{searchform.as_ul}}
+              <input type="submit" class="button" value="Search" id="topbarbutton" />
+            </div>
+        </form>
       </ul>
     </div>
 

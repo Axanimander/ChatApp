@@ -10,7 +10,7 @@
     <div class="grid-x">
         <div class="large-2 cell">
             {% if user.is_authenticated %}
-                <form action="" method="post">
+                <form action="" method="GET">
                 {% csrf_token %}
                 {{roomform}}
                 <input type="submit" class="button expanded" value="Make Room"/>
@@ -40,10 +40,20 @@
                         {% csrf_token %}
                             {{messageform.message}}
                         <div class="grid-x">
-                        <input id="room-name-submit{{room.id}}" type="submit" class="button" value="Add Tag" name="{{room.id}}">
+                            {%if user.is_authenticated %}
+                                <input id="room-name-submit{{room.id}}" type="submit" class="button" value="Add Tag" name="{{room.id}}">
+                            {% endif %}
+
                     </form>
+                    {% if user == room.creator %}
+                    
+                    <form id="deleteroom" action="deleteroom/{{room.id}}" method="post" name="DeleteRoom">
+                        {%csrf_token%}
+                        <input id="room-delete" type="submit" class="button" value="Delete Room" name="{{room.id}}">
+                    </form>
+                    {% endif %}
                     <form id="gotoroom{{room.id}}"" action="chat/{{room.id}}" value="Enter Room" name="{{room.roomName}}">
-                        <input id="gotoroom" type="submit" class="button" value="Enter Room" name="{{room.roomName}}">
+                        <input id="gotoroom" type="submit" class="button" value="Enter Room" name="{{room.roomName}}", id="enterroombutton">
                     </form>
                 </div>
                 </div>

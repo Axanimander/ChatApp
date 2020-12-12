@@ -3,22 +3,70 @@
 {% load static %}
 {% block title %}{{title}}{% endblock %}
 {% block content %}
-
-<div class="large-4">
-    
+<div class="grid-x">
+    <div class="large-4">
+        <h3 class="callout" id="profileheader">Profile Info</h3>
+        {% if request.user != user %}
+            {%if not following %}
+            <div class="callout" id="profileroomcontainer">
+                <a href = {% url 'follow' user.id %}> Follow </a>
+            </div>
+            {%endif%}
+            {%if following %}
+            <div class="callout" id="profileroomcontainer">
+                <a href = {% url 'follow' user.id %}> Unfollow </a>
+            </div>
+            {% endif %}
+        {% endif  %}
+        {%if request.user == user %}
+        <div class="grid-y">
+            
+            <div class="callout" id="profileroomcontainer">
+                <h4 id="profileroomheader">Statistics</h4>
+                Hello {{user.username}}
+                You have had: <div class="callout">{{num_messages}}</div> messages in your chat rooms
+            </div>
+            <div class="callout" id="profileroomcontainer" >
+                <div class="callout" id="scrollablemessagelog">
+                    <h4 id="profileroomheader">Messages</h4>
+                    {% for message in room_messages %}
+                        <div class="callout" id="profileheader">
+                            <a href={% url 'profile' message.sender.id %}>{{message.sender}}</a>: {{message.content}}
+                        </div>
+                    {%endfor%}
+                </div>
+            </div>
+        </div>
+        {%endif%}
+    </div>
+    <div class="large-4">
+     <h3 class="callout" id="profileheader">{{user.username}}</h3>
+     <div class="callout" id="profileroomcontainer">
+        <h4 id="profileroomheader">Following</h4>
+     <div class="callout" id="scrollablemessagelog">
+        {%if num_followed == 0 %}
+            {{user.username}} is not following anyone
+        {% endif %}
+            {% for follow in followed %}
+            <div>
+                <a href= {%url 'profile' follow.following.id %} >{{follow.following.username}}</a>
+            </div>
+            {%endfor%}
+        
+    </div>
 </div>
-<div class="large-4">
-<h1>You are viewing the profile of {{user.username}}</h1>
-</div>
-<div class="large-4">
-    <h2>Rooms created:</h2>
-    {% for room in rooms %}
-    <div class="card" style="width: 300px">
-        <div class="card-divider">
-            <a href="/chat/{{room.id}}">{{room.roomName}}</a>
+    </div>
+    <div class="large-4">
+        <h3 class="callout" id="profileheader">Rooms created</h3>
+        <div class="grid-y">
+            {% for room in rooms %}
+                <div class="large-4 cell">
+                    <div class="callout" id="profileroomcontainer" onclick="location.href='/chat/{{room.id}}'">
+                        {{room.roomName}}
+                    </div>
+                </div>
+            {%endfor%}
         </div>
     </div>
-    {%endfor%}
 </div>
-
 {% endblock %}

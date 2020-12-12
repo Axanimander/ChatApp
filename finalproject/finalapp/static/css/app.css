@@ -15,6 +15,11 @@
 }
 #topbarbutton{
     color:white;
+
+}
+
+#topbarbutton:hover{
+    background-color:red;
 }
 #dropdown{
     background-color: #7881F5;
@@ -54,7 +59,9 @@
     background-color: #4249A8;
 }
 
-
+#tag:hover{
+    border: solid blueviolet 2px;
+}
 #usersinroom{
     background-color: #23272A;
     color: green;
@@ -83,6 +90,26 @@
     background-color: aquamarine;
     border: solid blueviolet 5px;
     margin: 10px;
+    box-shadow:5px 5px green;
+}
+#profileroomcontainer{
+    background-color: aquamarine;
+    border: solid blueviolet 5px;
+    margin: 10px;
+    box-shadow:5px 5px green;
+    text-align:center;
+}
+#profileroomcontainer:hover{
+    
+    background-color:greenyellow;
+    box-shadow:10px 10px green;
+}
+#profileroomheader{
+    text-align:center;
+}
+#roomcontainer:hover{
+    background-color:greenyellow;
+    box-shadow:10px 10px green;
 }
 
 #id_message{
@@ -93,4 +120,18 @@
 
 #gotoroom{
     background-color: #23272A;
+}
+
+.button:hover{
+    border: solid purple 3px;
+}
+
+#profileheader{
+    background-color:grey;
+    text-align: center;
+}
+
+#scrollablemessagelog{
+    height: 40%;
+    overflow-y: scroll;
 }
