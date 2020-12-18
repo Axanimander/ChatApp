@@ -17,7 +17,7 @@
         <li><a href="/register/"  id="topbarbutton">Register</a></li>
         {% endif %}
         {% if user.is_authenticated %}
-        <li><a href="/logout/" id="topbarbutton">Logout</a></li>
+        <li><a href="/my_logout/" id="topbarbutton">Logout</a></li>
         <li><a href="/profile/{{request.user.id}}/"  id="topbarbutton">Profile</a></li>
         {% endif %}
         <form action = "/" method = "GET">

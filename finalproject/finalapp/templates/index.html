@@ -24,7 +24,13 @@
                         roomidarr.push("{{room.id}}")
                     </script>
                     <div class="large-2 cell label" id="roomname">
+                        <div class="grid-y">
                         <h5>{{room.roomName}}</h5>
+                        <div id="roomcreatordiv">
+                            Created By:
+                        <a href={% url 'profile' room.creator.id %} id="roomcreator">{{room.creator}}</a>
+                        </div>
+                    </div>
                     </div>
                     <script type="text/javascript">
                         var roomid = "{{room.id}}"
@@ -41,20 +47,22 @@
                             {{messageform.message}}
                         <div class="grid-x">
                             {%if user.is_authenticated %}
-                                <input id="room-name-submit{{room.id}}" type="submit" class="button" value="Add Tag" name="{{room.id}}">
+                                <input id="tagbutton" type="submit" class="button" value="Add Tag" name="{{room.id}}" >
                             {% endif %}
-
                     </form>
-                    {% if user == room.creator %}
-                    
-                    <form id="deleteroom" action="deleteroom/{{room.id}}" method="post" name="DeleteRoom">
-                        {%csrf_token%}
-                        <input id="room-delete" type="submit" class="button" value="Delete Room" name="{{room.id}}">
-                    </form>
-                    {% endif %}
                     <form id="gotoroom{{room.id}}"" action="chat/{{room.id}}" value="Enter Room" name="{{room.roomName}}">
                         <input id="gotoroom" type="submit" class="button" value="Enter Room" name="{{room.roomName}}", id="enterroombutton">
                     </form>
+                    {% if user == room.creator %}
+                    <div class="large-8 cell"></div>
+                    
+                    <form id="deleteroom" action="deleteroom/{{room.id}}" method="post" name="DeleteRoom" >
+                        {%csrf_token%}
+                        <div class="clearfix">
+                             <input id="room-delete" type="submit" class="button alert" value="Delete Room" name="{{room.id}}">
+                        </div>
+                    </form>
+                    {% endif %}
                 </div>
                 </div>
             </div>   

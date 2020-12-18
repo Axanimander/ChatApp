@@ -9,7 +9,7 @@ urlpatterns = [
     path('', views.index),
     path('comment/<int:room_id>/', views.addmessage),
     path('login/', auth_views.LoginView.as_view()),
-    path('logout/', views.logout_view),
+    path('my_logout/', views.logout_view),
     path('register/', views.myregister),
     path('', views.index, name='account-redirect'),
     path('chat/<int:room_id>/', views.room, name='room'),

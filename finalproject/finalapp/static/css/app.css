@@ -103,6 +103,7 @@
     
     background-color:greenyellow;
     box-shadow:10px 10px green;
+    cursor:pointer;
 }
 #profileroomheader{
     text-align:center;
@@ -122,16 +123,36 @@
     background-color: #23272A;
 }
 
-.button:hover{
-    border: solid purple 3px;
+#tagbutton:hover{
+    background-color:red;
 }
-
+#gotoroom:hover{
+    background-color:red;
+}
 #profileheader{
     background-color:grey;
     text-align: center;
 }
 
-#scrollablemessagelog{
-    height: 40%;
-    overflow-y: scroll;
+
+#roomcreatordiv{
+    width:20%;
+    color:brown;
+    
 }
+#roomcreator{
+    color:white;
+    border-radius:5px;
+    text-decoration:underline;
+}
+#roomcreator:hover{
+   
+    color:blue;
+}
+
+#room-delete{
+   
+}
+
+
+
