@@ -6,18 +6,20 @@
 <div class="grid-x">
     <div class="large-4">
         <h3 class="callout" id="profileheader">Profile Info</h3>
-            {% if request.user != user and user.is_authenticated %}
-                {%if not following  and user.is_authenticated %}
+        {% if user.is_authenticated %}
+            {% if request.user != user %}
+                {%if not following %}
                 <div class="callout" id="profileroomcontainer">
                     <a href = {% url 'follow' user.id %}> Follow </a>
                 </div>
                 {%endif%}
-                {%if following and user.is_authenticated %}
+                {% if following %}
                 <div class="callout" id="profileroomcontainer">
                     <a href = {% url 'follow' user.id %}> Unfollow </a>
                 </div>
                 {% endif %}
             {% endif  %}
+        {%endif%}
         {%if request.user == user %}
         <div class="grid-y">
             
