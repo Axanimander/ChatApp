@@ -6,7 +6,9 @@
 <div class="grid-x">
     <div class="large-4">
         <h3 class="callout" id="profileheader">Profile Info</h3>
-        {% if user.is_authenticated %}
+        {% if not request.user.is_authenticated %}
+        <div>Login to view your profile/follow/unfollow</div>
+        {%else%}
             {% if request.user != user %}
                 {%if not following %}
                 <div class="callout" id="profileroomcontainer">
@@ -19,7 +21,7 @@
                 </div>
                 {% endif %}
             {% endif  %}
-        {%endif%}
+        {% endif %}
         {%if request.user == user %}
         <div class="grid-y">
             
