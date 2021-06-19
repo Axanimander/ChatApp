@@ -1,5 +1,9 @@
 # ChatApp
+Full stack web app Database and sockets implementation using Django
 CINS465 Final Project Repo
 
-# What is it
-Full stack web app with database and sockets implementation using Django, with Docker and nginx.
+# Using
+* Foundation CSS
+* Django
+* Docker
+* Nginx
